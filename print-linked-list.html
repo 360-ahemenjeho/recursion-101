@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Print linked lists</title>
+    </head>
+
+    <body>
+        <script>
+            function prinLinkedList(list) {
+                if (list.next === null) {
+                    console.log("list value: ", list.value);
+                    return;
+                } else {
+                    console.log("list value: ", list.value);
+                    prinLinkedList(list.next);
+                }
+            }
+
+            prinLinkedList({
+                value: 1,
+                next: { value: 2, next: { value: 3, next: null } },
+            });
+        </script>
+    </body>
+</html>
