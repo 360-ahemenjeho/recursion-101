@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Merge Sort Visualization</title>
+    </head>
+    <body>
+        <script>
+            function mergeSort(arr) {
+                if (arr.length <= 1) return arr;
+
+                const mid = Math.floor(arr.length / 2);
+                const left = mergeSort(arr.slice(0, mid));
+                const right = mergeSort(arr.slice(mid));
+
+                console.log(`Merging:`, left, "and", right);
+
+                return merge(left, right);
+            }
+
+            /*
+              [2, 5, 6, 3]
+              ->  mergeSort([5, 2, 6, 3])
+                  ->  mergeSort([5, 2])
+                        ->  mergeSort([5])
+                        ->  mergeSort([2])
+                      merge([5], [2]) ->  [2, 5]
+                  ->  mergeSort([6, 3])
+                        ->  mergeSort([6])
+                        ->  mergeSort([3])
+                      merge([6], [3]) -> [3, 6]
+                  merge([3, 6], [2, 5]) -> [2, 3, 5, 6]
+            */
+
+            function merge(left, right) {
+                const result = [];
+                let i = 0;
+                let j = 0;
+
+                // Compare elements from both halves and merge
+                while (i < left.length && j < right.length) {
+                    if (left[i] < right[j]) {
+                        result.push(left[i]);
+                        i++;
+                    } else {
+                        result.push(right[j]);
+                        j++;
+                    }
+                }
+
+                // Add remaining elements (only one of these will have items)
+                return result.concat(left.slice(i)).concat(right.slice(j));
+            }
+
+            const array = [8, 3, 5, 4, 7, 6, 1, 2];
+            console.log("input: ", array);
+            const sorted = mergeSort(array);
+            console.log("output: ", sorted);
+        </script>
+    </body>
+</html>
