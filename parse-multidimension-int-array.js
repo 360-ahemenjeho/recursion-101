@@ -1,0 +1,22 @@
+function totalIntegers(arr) {
+  if (!arr || arr.length === 0) {
+    return 0;
+  }
+
+  let count = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      count += totalIntegers(arr[i]);
+    } else if (typeof arr[i] === "number") {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(
+  "total integers: ",
+  totalIntegers([[[5], 3], 0, 2, ["foo"], [], [4, [5, 6]]]),
+);

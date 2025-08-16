@@ -1,0 +1,36 @@
+const data = {
+  value: 1,
+  next: { value: 2, next: { value: 3, next: null } },
+};
+
+function prinLinkedList(list) {
+  if (list.next === null) {
+    console.log("list value: ", list.value);
+    return;
+  }
+
+  console.log("list value: ", list.value);
+  prinLinkedList(list.next);
+}
+
+prinLinkedList(data);
+
+function prinLinkedListReverse(list) {
+  if (list.next === null) {
+    console.log("list value rev: ", list.value);
+    return;
+  }
+  prinLinkedListReverse(list.next);
+  console.log("list value rev: ", list.value);
+}
+
+/*
+  print(1);
+  print(2);
+  * logs 3
+  * logs 2
+  * logs 1
+  # hence we get the reverse order
+*/
+
+prinLinkedListReverse(data);

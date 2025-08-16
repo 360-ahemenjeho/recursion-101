@@ -1,0 +1,29 @@
+function pow_itr(base, exponent) {
+  if (exponent < 1) return base;
+
+  let result = 1;
+  for (let i = 1; i <= exponent; i++) {
+    result = result * base;
+  }
+  return result;
+}
+
+function pow_recur(base, exponent) {
+  if (exponent === 0) return 1;
+  if (exponent === 1) return base;
+  return base * pow_recur(base, exponent - 1);
+}
+
+console.log("2^3: ", pow_itr(2, 3));
+console.log("4^2: ", pow_itr(4, 2));
+console.log("2^2: ", pow_itr(2, 2));
+
+// 2 * rec(2, 2)
+// 2 * rec(2, 1)
+// 2
+// -> 2 * 2 ~ 4
+// -> 4 * 2 ~ 8
+
+console.log("2^3: ", pow_recur(2, 3));
+console.log("4^2: ", pow_recur(4, 2));
+console.log("2^2: ", pow_recur(2, 2));

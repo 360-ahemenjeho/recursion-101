@@ -1,0 +1,14 @@
+function sumTo(n) {
+  if (n === 1) return 1;
+  return n + sumTo(n - 1);
+}
+
+console.log(sumTo(5));
+// 5 + 4 + 3 + 2 + 1 = 15
+// 5 + sumTo(4) + sumTo(3) + sumTo(2) + sumTo(1)
+// when it reaches the base case, it returns 1; then it starts giving back the returns as below
+// 2 + 1 = 3 -> 2 + sumTo(1) [which is 1 now. you get?] = 3
+// 3 + 3 = 6 -> now sumTo(2) returns 3, so 3 + 3 = 6
+// 4 + 6 = 10 -> now sumTo(3) returns 6, so 4 + 6 = 10
+// 5 + 10 = 15 -> now sumTo(4) returns 10, so 5 + 10 = 15
+// that is the mystery!
